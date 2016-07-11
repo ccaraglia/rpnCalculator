@@ -20,7 +20,7 @@ _getRightIndexAccumulatorStr: function(numberStack, rightIndex){
     if (numberStack.length < -(rightIndex)){
         return '0'
     }else{
-        return (numberStack[numberStack.length + rightIndex])
+        return (parseFloat(numberStack[numberStack.length + rightIndex]))
     }
 },
 
@@ -161,7 +161,7 @@ _captureEnterKey: function(){
 _captureAdditionKey: function(){
     var resultingDisplay
 
-    resultingDisplay=parseInt(this.state.currentDisplay) + this.state.numberStack[this.state.numberStack.length-1]
+    resultingDisplay=parseFloat(this.state.currentDisplay) + parseFloat(this.state.numberStack[this.state.numberStack.length-1])
 
     var numberStackCopy = this.state.numberStack.map(x => {return x})
 
@@ -178,7 +178,7 @@ _captureAdditionKey: function(){
 _captureSubtractionKey: function(){
 var resultingDisplay
 
-    resultingDisplay=parseInt(this.state.currentDisplay) - this.state.numberStack[this.state.numberStack.length-1]
+    resultingDisplay=parseFloat(this.state.currentDisplay) - this.state.numberStack[this.state.numberStack.length-1]
 
     var numberStackCopy = this.state.numberStack.map(x => {return x})
 
@@ -236,7 +236,7 @@ _captureNumKey: function(evt){
 
         case 'operation':
             var numberStackCopy = this.state.numberStack.map(x => {return x})
-            numberStackCopy.push((this.state.currentDisplay))
+            numberStackCopy.push(parseFloat(this.state.currentDisplay))
             console.log(evt.target.dataset.numval)
             this.setState({
                 lastKeyPressed: 'number',
@@ -250,10 +250,10 @@ _captureNumKey: function(evt){
 
             if(this.state.currentDisplay === '0'){
 
-                resultingDisplay= (evt.target.dataset.numval)
+                resultingDisplay= parseFloat(evt.target.dataset.numval)
 
             }else{
-                resultingDisplay = (this.state.currentDisplay+evt.target.dataset.numval)
+                resultingDisplay = parseFloat(this.state.currentDisplay+evt.target.dataset.numval)
             }
 
             this.setState({
